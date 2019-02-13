@@ -198,20 +198,38 @@ def team_names
 end
 
 def player_numbers(team_name)
-  result = Array.new
-  if game_hash[:home][:team_name] == team_name
-    game_hash[:home][:players].each do |player, stats|
-      result << stats[:number]
+  # result = Array.new
+  # if game_hash[:home][:team_name] == team_name
+  #   game_hash[:home][:players].each do |player, stats|
+  #     result << stats[:number]
+  #   end
+  #   return result
+  # elsif game_hash[:away][:team_name] == team_name
+  #   game_hash[:away][:players].each do |player, stats|
+  #     result << stats[:number]
+  #   end
+  #   return result
+  # else
+  #   return nil
+  # end
+  
+  numbers = Array.new
+  game_hash.each do |key, value|
+    if value[:team_name] == team_name
+      value[:players].each do |key1, value1|
+        # binding.pry
+        value1.each do |key2, value2|
+          if key2 == :number
+            # binding.pry
+            numbers << value2
+          end
+        end
+        # numbers << value1[:number]
+      end
     end
-    return result
-  elsif game_hash[:away][:team_name] == team_name
-    game_hash[:away][:players].each do |player, stats|
-      result << stats[:number]
-    end
-    return result
-  else
-    return nil
+    # binding.pry
   end
+  numbers
 end
 
 def player_stats(player)
