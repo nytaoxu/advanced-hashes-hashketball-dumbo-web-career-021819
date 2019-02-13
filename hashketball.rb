@@ -255,24 +255,46 @@ def player_stats(player)
 end
 
 def big_shoe_rebounds
-  # {:shoe => , :rebounds => }
-  result = Array.new
-  game_hash[:home][:players].each do |player, stats|
-    result << {
-      :shoe => stats[:shoe],
-      :rebounds => stats[:rebounds]
-    }
-  end
-  game_hash[:away][:players].each do |player, stats|
-    result << {
-      :shoe => stats[:shoe],
-      :rebounds => stats[:rebounds]
-    }
+  # # {:shoe => , :rebounds => }
+  # result = Array.new
+  # game_hash[:home][:players].each do |player, stats|
+  #   result << {
+  #     :shoe => stats[:shoe],
+  #     :rebounds => stats[:rebounds]
+  #   }
+  # end
+  # game_hash[:away][:players].each do |player, stats|
+  #   result << {
+  #     :shoe => stats[:shoe],
+  #     :rebounds => stats[:rebounds]
+  #   }
+  # end
+  # target = 0
+  # for i in (1...result.length) do
+  #   if result[i][:shoe] > result[target][:shoe]
+  #     target = i
+  #   end
+  # end
+  # result[target][:rebounds]
+  
+  result = Array.new # each element is a hash {:shoe => , :rebounds => }
+  
+  game_hash.each do |key, value|
+    value.each do |key1, value1|
+      if key1 == :players
+        value1.each do |key2, value2|
+          result << {
+            :shoe => value2[:shoe],
+            :rebounds => value2[:rebounds]
+          }
+        end
+      end
+    end
   end
   target = 0
-  for i in (1...result.length) do
-    if result[i][:shoe] > result[target][:shoe]
-      target = i
+  for index in 1...result.length do
+    if result[index][:shoe] > result[target][:shoe]
+      target = index
     end
   end
   result[target][:rebounds]
