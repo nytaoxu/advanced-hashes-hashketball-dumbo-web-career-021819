@@ -128,13 +128,19 @@ def num_points_scored(player)
   #   return nil
   # end
   
-  game_hash.each do |key, value|
-    value.each do |key1, value1|
-      if key1 == :players
-        value1.each do |key2, value2|
-          if key2 == player
-            return value2[:points]
-          end
+  game_hash.each do |location, team_info|
+    team_info.each do |key1, value1|
+      # team_info[:players]
+      # if key1 == :players
+      #   value1.each do |key2, value2|
+      #     if key2 == player
+      #       return value2[:points]
+      #     end
+      #   end
+      # end
+      team_info[:players].each do |name, stats|
+        if name == player
+          return stats[:points]
         end
       end
     end
@@ -300,3 +306,22 @@ def big_shoe_rebounds
   result[target][:rebounds]
 end
 
+def player_by_number(number)
+  # the name of the player who has that number
+  # game_hash.each do |location, team_info|
+  #   team_info.each do |key, value|
+  #     value.each do |key1, value1|
+  #       binding.pry
+  #     end
+  #   end
+  # end
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |name, stats|
+      if stats[:number] == number
+        return puts name
+      end
+    end
+  end
+end
+
+player_by_number(33)
