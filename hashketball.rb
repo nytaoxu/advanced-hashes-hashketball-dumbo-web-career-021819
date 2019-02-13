@@ -120,23 +120,49 @@ def game_hash
 end
 
 def num_points_scored(player)
-  if game_hash[:home][:players].include?(player)
-    return game_hash[:home][:players][player][:points]
-  elsif game_hash[:away][:players].include?(player)
-    return game_hash[:away][:players][player][:points]
-  else
-    return nil
+  # if game_hash[:home][:players].include?(player)
+  #   return game_hash[:home][:players][player][:points]
+  # elsif game_hash[:away][:players].include?(player)
+  #   return game_hash[:away][:players][player][:points]
+  # else
+  #   return nil
+  # end
+  
+  game_hash.each do |key, value|
+    value.each do |key1, value1|
+      if key1 == :players
+        value1.each do |key2, value2|
+          if key2 == player
+            return value2[:points]
+          end
+        end
+      end
+    end
   end
+  
 end
 
 def shoe_size(player)
-  if game_hash[:home][:players].include?(player)
-    return game_hash[:home][:players][player][:shoe]
-  elsif game_hash[:away][:players].include?(player)
-    return game_hash[:away][:players][player][:shoe]
-  else
-    return nil
+  # if game_hash[:home][:players].include?(player)
+  #   return game_hash[:home][:players][player][:shoe]
+  # elsif game_hash[:away][:players].include?(player)
+  #   return game_hash[:away][:players][player][:shoe]
+  # else
+  #   return nil
+  # end
+  
+  game_hash.each do |key, value|
+    value.each do |key1, value1|
+      if key1 == :players
+        value1.each do |key2, value2|
+          if key2 == player
+            return value2[:shoe]
+          end
+        end
+      end
+    end
   end
+  
 end
 
 def team_colors(team_name)
