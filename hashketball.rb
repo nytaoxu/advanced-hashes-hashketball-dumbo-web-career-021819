@@ -318,7 +318,7 @@ def player_by_number(number)
   game_hash.each do |key, value|
     value[:players].each do |key1, value1|
       if value1[:number] == number
-        return key1
+        puts key1
       end
     end
   end
