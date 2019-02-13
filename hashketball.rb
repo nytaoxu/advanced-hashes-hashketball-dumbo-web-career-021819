@@ -128,8 +128,8 @@ def num_points_scored(player)
   #   return nil
   # end
   
-  game_hash.each do |key, value|
-    value.each do |key1, value1|
+  game_hash.each do |location, team_info|
+    team_info.each do |key1, value1|
       if key1 == :players
         value1.each do |key2, value2|
           if key2 == player
