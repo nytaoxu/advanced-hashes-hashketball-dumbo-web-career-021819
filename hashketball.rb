@@ -306,3 +306,9 @@ def big_shoe_rebounds
   result[target][:rebounds]
 end
 
+def player_by_number(number)
+  # the name of the player who has that number
+  game_hash.each do |location, team_info|
+    
+  end
+end
