@@ -315,8 +315,8 @@ def player_by_number(number)
   #     end
   #   end
   # end
-  game_hash.each do |key, value|
-    value[:players].each do |key1, value1|
+  game_hash.each do |location, team_info|
+    team_info[:players].each do |key1, value1|
       if value1[:number] == number
         puts key1
       end
