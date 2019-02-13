@@ -310,10 +310,7 @@ def player_by_number(number)
   # the name of the player who has that number
   game_hash.each do |location, team_info|
     team_info.each do |key, value|
-      binding.pry
-      value[:players].each do |name, stats|
-        
-      end
+      
     end
   end
 end
