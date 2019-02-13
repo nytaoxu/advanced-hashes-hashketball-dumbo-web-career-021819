@@ -316,7 +316,7 @@ def player_by_number(number)
   #   end
   # end
   game_hash.each do |key, value|
-    
+    value[:players]
   end
 end
 
