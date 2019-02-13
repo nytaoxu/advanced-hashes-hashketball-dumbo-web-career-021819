@@ -233,12 +233,24 @@ def player_numbers(team_name)
 end
 
 def player_stats(player)
-  if game_hash[:home][:players].include?(player)
-    return game_hash[:home][:players][player]
-  elsif game_hash[:away][:players].include?(player)
-    return game_hash[:away][:players][player]
-  else
-    return nil
+  # if game_hash[:home][:players].include?(player)
+  #   return game_hash[:home][:players][player]
+  # elsif game_hash[:away][:players].include?(player)
+  #   return game_hash[:away][:players][player]
+  # else
+  #   return nil
+  # end
+  
+  game_hash.each do |key, value|
+    value.each do |key1, value1|
+      if key1 == :players
+        value1.each do |key2, value2|
+          if key2 == player
+            return value2
+          end
+        end
+      end
+    end
   end
 end
 
