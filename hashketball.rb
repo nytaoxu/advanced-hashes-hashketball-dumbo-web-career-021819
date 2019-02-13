@@ -315,6 +315,9 @@ def player_by_number(number)
   #     end
   #   end
   # end
+  game_hash.each do |key, value|
+    
+  end
 end
 
 player_by_number(33)
